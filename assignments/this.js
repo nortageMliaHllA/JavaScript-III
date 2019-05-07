@@ -33,30 +33,19 @@ myObj.sayHello('Megatron');
 // Principle 3
 
 // code example for New Binding
-function Parent(attr) {
-    this.name = attr.name;
-    this.age = attr.age;
-    this.phrase = attr.phrase; 
+function CordialPerson(obj) {
+    this.greeting = 'Hello ';
+    this.obj = obj;
+    this.speak = function() {
+        console.log(this.greeting + this.obj);
+        console.log(this);
+    };
 }
+const ahmad = new CordialPerson('Rashad');
+const rashad = new CordialPerson('Ahmad');
 
-Parent.prototype.speak = function() {
-    return `${this.name} says ${this.phrase}`;
-}
-
-const ahmad = new Parent({
-    name: 'Ahmad',
-    age: 34,
-    phrase: 'We must learn JavaScript!'
-})
-
-const ashley = new Parent({
-    name: 'Ashley',
-    age: 31,
-    phrase: 'Ahmad!'
-})
-
-console.log(ahmad.speak());
-console.log(ashley.speak());
+ahmad.speak();
+rashad.speak();
 
 // Principle 4
 
@@ -65,12 +54,12 @@ function Person(obj) {
     this.name = obj.name;
     this.age = obj.age;
     this.speak = function() {
-        console.log(this);
+        console.log(this, );
         return `Hello, my name is ${this.name} and I am ${this.age} years old!`;
     }
 }
-const chris = new Person({name:'Chris', age: 30});
-const adam = new Person({name:'Adam', age: 24});
+const john = new Person({name:'Chris', age: 30});
+const chris = new Person({name:'John', age: 24});
 
-chris.speak.call(adam);
-adam.speak.apply(chris);
+john.speak.call(chris);
+chris.speak.apply(john);
