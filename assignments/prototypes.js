@@ -125,6 +125,13 @@ Humanoid.prototype.greet = function() {
     language: 'Elvish',
   });
 
+const badguy = new Villain({
+  createdAt: new Date(),
+  healthPoints: 0,
+  name: 'Starscream',
+  team: 'Decepticons',
+})
+
   console.log(mage.createdAt); // Today's date
   console.log(archer.dimensions); // { length: 1, width: 2, height: 4 }
   console.log(swordsman.healthPoints); // 15
@@ -135,9 +142,26 @@ Humanoid.prototype.greet = function() {
   console.log(archer.greet()); // Lilith offers a greeting in Elvish.
   console.log(mage.takeDamage()); // Bruce took damage.
   console.log(swordsman.destroy()); // Sir Mustachio was removed from the game.
-
+  console.log(badguy.createdAt);// Today's date
+  console.log(badguy.healthPoints);//0
 
   // Stretch task: 
   // * Create Villain and Hero constructor functions that inherit from the Humanoid constructor function.  
+
+  function Villain(villainattr) {
+    Humanoid.call(this, villainattr);
+    this.name = villainattr.name;
+    this.team = villainattr.team;
+    this.healthPoints = villainattr.healthPoints;
+  }
+
+  function Hero(heroattr) {
+    Humanoid.call(this, heroattr);
+    this.name = heroattr.name;
+    this.team = heroattr.team;
+    this.healthPoints = heroattr.healthPoints;
+  }
+
+
   // * Give the Hero and Villains different methods that could be used to remove health points from objects which could result in destruction if health gets to 0 or drops below 0;
   // * Create two new objects, one a villain and one a hero and fight it out with methods!
